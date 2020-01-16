@@ -1,0 +1,23 @@
+# pgweb running command
+db_utils\pgweb /user myuser /pass mypassword /db fyyrdb
+
+# pgweb address
+http://localhost:8081/
+
+------ Recreate the testing database ------
+Delete migrations folder
+
+# Drop existing database
+dropdb -U myuser fyyrdb
+
+# Create a new database
+createdb -O myuser fyyrdb
+
+# Initialize migrasions folder
+flask db init
+
+# run migrations detect
+flask db migrate
+
+# run migration upgrade to create all tables
+flask db upgrade
